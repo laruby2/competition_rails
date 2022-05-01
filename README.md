@@ -1,24 +1,17 @@
-# README
+# Competition app: Ruby on Rails version 7.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Many users submit scores at the same time
+- Save all to the database
+- user, like, contestant
+- Screen should show "my votes" for the user. That would be a list of contestants with their "vote" the user selected. The user should be able to select and update the "vote" of each contestant
+- the "total votes" screen is on the separate page for current running result of total scores from all users of all contestant. It can be accessed only by admin.
+- I want it to be a Rails app with hotwire
+- I might try google cloud platform this time?
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Scenario to build
+- add postgresql to persist
+- add logic and show on web pages
+- use broadcast (No need to refresh screen)
+- separate front and back for mobile apps?
+- add authentication for voters/users
+- add authentication for admins - to see vote results
