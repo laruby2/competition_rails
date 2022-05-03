@@ -1,11 +1,11 @@
 <%= turbo_frame_tag "#{dom_id(contestant)}_votes" do %>
   <% if vote = contestant.my_vote %>
     <%= button_to contestant_vote_path(contestant, vote), method: :delete do %>
-      <%= image_tag("full-heart.svg") %> A
+      <%= image_tag("full-heart.svg") %> Unvote
     <% end %>
   <% else %>
     <%= button_to contestant_votes_path(contestant) do %>
-      <%= image_tag("empty-heart.svg") %> B
+      <%= image_tag("empty-heart.svg") %> Vote
     <% end %>
   <% end %>
 <% end %>

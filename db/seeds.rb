@@ -10,4 +10,7 @@ contestants = Contestant.create([
   { name: "TShirts", location: "La Cañada Flintridge" },
   { name: "Star Wars", location: "Galaxy" }
 ])
-User.create(username: "jimmy", phone_number: "abcd123", password: "1111")
+users = User.create([
+  { username: "jimmy", phone_number: "abcd123", password: "1111" },
+  { username: "gapbun", phone_number: "asdf456", password: "1111" }
+])
