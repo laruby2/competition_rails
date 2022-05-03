@@ -1,0 +1,21 @@
+<%= turbo_frame_tag "contestants" do %>
+  <% if @contestants.any? %>
+    <div>
+      <table>
+        <tbody>
+          <% @contestants.each do |contestant| %>
+            <tr>
+              <td><%= contestant.name %></td>
+              <td><%= render "activity/votes", contestant: contestant %></td>
+            </tr>
+            
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div>
+      <h2>No contestants</h2>
+    </div>
+  <% end %>
+<% end %>
