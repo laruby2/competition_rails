@@ -14,4 +14,4 @@ Scenario to build
 - use broadcast (No need to refresh screen)
 - separate front and back for mobile apps?
 - add authentication for voters/users
-- add authentication for admins - to see vote results
+- add authorization for admins - to see vote results
