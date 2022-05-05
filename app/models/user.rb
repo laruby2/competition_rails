@@ -5,6 +5,8 @@ class User < ApplicationRecord
   validates :username, presence: true,
     uniqueness: { case_sensitive: false }
 
+  enum user_role: [:admin, :audience]
+
   def assign_my_votes_to_contestants(contestants)
     my_votes = votes.where(contestant: contestants)
     contestants.collect do |cont|
