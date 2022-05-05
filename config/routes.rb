@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :votes
   end
 
-  resources :users
+  resources :users, only: [:new, :create]
   get "register" => "users#new"
 
   resource :session, only: [:new, :create, :destroy]
