@@ -1,11 +1,14 @@
-<h2>Sign In</h2>
+<h2>Register</h2>
 
-<%= form_with(url: session_path) do |f| %>
+<%= form_with(model: @user) do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username, autofocus: true, required: true %>
+
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
 
   <%= f.label :password %>
   <%= f.password_field :password, required: true %>
 
-  <%= f.submit "Sign In" %>
+  <%= f.submit "Register" %>
 <% end %>
