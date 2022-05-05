@@ -18,3 +18,4 @@ Scenario to build
 
 More Features
 - admin able to add users and assign admin
+- only allowed users able to see the results

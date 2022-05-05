@@ -1,0 +1,9 @@
+jimmy:
+  username: jimmy
+  password_digest: <%= BCrypt::Password.create("1111", cost: 4) %>
+  user_role: audience
+
+gapbun:
+  username: gapbun
+  password_digest: <%= BCrypt::Password.create("1111", cost: 4) %>
+  user_role: admin
