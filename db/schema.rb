@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_05_143942) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_06_041419) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "contestants", force: :cascade do |t|
@@ -29,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_143942) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_role", default: 1
+    t.uuid "another_id", default: -> { "gen_random_uuid()" }, null: false
+    t.index ["another_id"], name: "index_users_on_another_id"
   end
 
   create_table "votes", force: :cascade do |t|

@@ -22,6 +22,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(another_id: params[:id])
+
+    if @user && @user == current_user
+      render
+    else
+      redirect_to root_url, notice: "Not your user page"
+    end
   end
 
   private
