@@ -18,6 +18,10 @@ class AdminFlowTest < ActionDispatch::IntegrationTest
     post session_path, params: { username: "jimmy", password: "1111" }
     get results_path
     assert_response :redirect
+
+    follow_redirect!
+    assert_equal user_path(users(:jimmy)), path
+
     assert_equal "admin only", flash[:notice]
   end
 
