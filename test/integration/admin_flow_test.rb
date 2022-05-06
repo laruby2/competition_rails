@@ -8,6 +8,9 @@ class AdminFlowTest < ActionDispatch::IntegrationTest
 
   test "admin can see results after login" do
     get signin_path
+    assert_response :success
+
+    https!
     post session_path, params: { username: "gapbun", password: "1111" }
     get results_path
     assert_response :success
