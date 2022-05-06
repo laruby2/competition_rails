@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_signin, only: [:index]
+  before_action :require_signin, only: [:index, :show]
   before_action :require_admin, only: [:index]
 
   def new
@@ -19,6 +19,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  end
+
+  def show
   end
 
   private

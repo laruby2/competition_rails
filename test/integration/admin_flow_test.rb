@@ -18,5 +18,20 @@ class AdminFlowTest < ActionDispatch::IntegrationTest
     post session_path, params: { username: "jimmy", password: "1111" }
     get results_path
     assert_response :redirect
+    assert_equal "admin only", flash[:notice]
+  end
+
+  test "admin can see their own user page" do
+    get signin_path
+    post session_path, params: { username: "gapbun", password: "1111" }
+    get user_path(users(:gapbun))
+    assert_select "p", "admin"
+  end
+
+  test "audience can see their own user page" do
+    get signin_path
+    post session_path, params: { username: "jimmy", password: "1111" }
+    get user_path(users(:jimmy))
+    assert_select "p", "audience"
   end
 end

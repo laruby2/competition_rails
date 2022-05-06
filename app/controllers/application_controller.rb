@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     if current_user.audience?
-      redirect_to root_url
+      redirect_to root_url, notice: "admin only"
     end
   end
 end
