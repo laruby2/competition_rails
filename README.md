@@ -15,3 +15,7 @@ Scenario to build
 - separate front and back for mobile apps?
 - add authentication for voters/users
 - add authorization for admins - to see vote results
+
+More Features
+- admin able to add users and assign admin
+- only allowed users able to see the results

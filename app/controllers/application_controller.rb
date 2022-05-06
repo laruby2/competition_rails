@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
   def signed_in?
     !current_user.nil?
   end
+
+  def require_admin
+    if current_user.audience?
+      redirect_to user_url(current_user), notice: "admin only"
+    end
+  end
 end
