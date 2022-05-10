@@ -6,7 +6,6 @@ class VotesController < ApplicationController
     return if existing_vote
 
     vote = @contestant.votes.create!(user: current_user)
-    # ...
     @contestant.my_vote = vote
     render partial: "activity/votes", locals: { contestant: @contestant }
   end
@@ -16,7 +15,6 @@ class VotesController < ApplicationController
     return unless existing_vote
 
     existing_vote.destroy!
-    # ...
     render partial: "activity/votes", locals: { contestant: @contestant }
   end
 

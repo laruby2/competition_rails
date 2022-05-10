@@ -1,0 +1,6 @@
+<% @contestants.each do |contestant| %>
+  <%= contestant.name %> |
+  <%= contestant.location %><br>
+<% end %>
+
+<%= link_to "Add a new contestant", new_admin_contestant_path %>
