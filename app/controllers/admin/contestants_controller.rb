@@ -13,9 +13,10 @@ class Admin::ContestantsController < ApplicationController
   def create
     @contestant = Contestant.new(contestant_params)
     if @contestant.save
-      redirect_to admin_contestants_url
+      # Use create.turbo_stream.erb
+      # redirect_to admin_contestants_url
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
