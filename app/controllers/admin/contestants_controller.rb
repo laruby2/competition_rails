@@ -20,6 +20,12 @@ class Admin::ContestantsController < ApplicationController
     end
   end
 
+  def destroy
+    @contestant = Contestant.find(params[:id])
+    @contestant.destroy
+    # Use destroy.turbo_stream.erb
+  end
+
   private
 
   def contestant_params

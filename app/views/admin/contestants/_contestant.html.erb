@@ -1,5 +1,8 @@
-<p>
-  <%= contestant.name %> |
-  <%= contestant.location %> |
-  <%= contestant.votes_count %>
-</p>
+<%= turbo_frame_tag contestant do %>
+  <p>
+    <%= contestant.name %> |
+    <%= contestant.location %> |
+    <%= contestant.votes_count %>
+  </p>
+  <%= button_to 'delete', admin_contestant_path(contestant), method: :delete, form: { data: { turbo_confirm: "Are you sure with deleting #{contestant.name}?" }}  %>
+<% end %>
