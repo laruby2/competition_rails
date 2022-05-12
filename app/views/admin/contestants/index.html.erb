@@ -2,8 +2,6 @@
   <%= render @contestants %>
 <% end %>
 
-<%#= link_to "Add a new contestant", new_admin_contestant_path %>
-
 <%= form_with(url: admin_contestants_path, method: :post, model: Contestant.new) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name, autofocus: true, required: true %>

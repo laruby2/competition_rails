@@ -12,5 +12,5 @@ contestants = Contestant.create([
 ])
 users = User.create([
   { username: "jimmy", phone_number: "abcd123", password: "1111" },
-  { username: "gapbun", phone_number: "asdf456", password: "1111" }
+  { username: "gapbun", phone_number: "asdf456", password: "1111", user_role: "admin" }
 ])
