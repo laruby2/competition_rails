@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :contestants do
+  resources :contestants, only: [:index] do
     resources :votes
   end
 
@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   get "signin" => "sessions#new"
 
+  namespace :admin do
+    resources :contestants
+  end
   get "results" => "admin/dashboard#index"
 
   # Defines the root path route ("/")

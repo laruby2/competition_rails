@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "admin_contestants" do %>
+  <%= render @contestants %>
+<% end %>
+
+<%= form_with(url: admin_contestants_path, method: :post, model: Contestant.new) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, autofocus: true, required: true %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+
+  <%= f.submit "Add" %>
+<% end %>
