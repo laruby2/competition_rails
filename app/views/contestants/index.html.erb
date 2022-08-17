@@ -1,18 +1,13 @@
 <%= turbo_frame_tag "contestants" do %>
   <% if @contestants.any? %>
-    <div>
-      <table>
-        <tbody>
-          <% @contestants.each do |contestant| %>
-            <tr>
-              <td><%= contestant.name %></td>
-              <td><%= render "activity/votes", contestant: contestant %></td>
-            </tr>
-            
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+    <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <% @contestants.each do |contestant| %>
+        <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
+          <%= contestant.name %>
+          <%= render "activity/votes", contestant: contestant %>
+        </li>
+      <% end %>
+    </ul>
   <% else %>
     <div>
       <h2>No contestants</h2>

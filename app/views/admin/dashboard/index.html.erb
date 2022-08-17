@@ -1,9 +1,17 @@
 <%= turbo_stream_from "activity" %>
 
-<% @contestants.each do |contestant| %>
-  <%= contestant.name %> |
-  <%= contestant.location %>
-  <%= turbo_frame_tag "#{dom_id(contestant)}_votes_count" do %>
-    <%= contestant.votes_count %><br>
+<ul class="w-full font-medium text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+  <% @contestants.each do |contestant| %>
+    <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600 group">
+      <p class="text-sm text-gray-900">
+        <%= contestant.name %>
+        <div class="float-right">
+          <%= turbo_frame_tag "#{dom_id(contestant)}_votes_count" do %>
+            <%= contestant.votes_count %><br>
+          <% end %>
+        </div>
+      </p>
+      <h3 class="text-sm text-gray-400"><%= contestant.location %></h3>
+    </li>      
   <% end %>
-<% end %>
+</ul>
