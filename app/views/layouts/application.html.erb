@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-50">
   <head>
     <title>CompetitionRails</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="h-full">
     <nav class="bg-gray-800">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
@@ -19,11 +19,11 @@
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <%= link_to "Voting Place", root_path, class: "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium", aria: {current: "page"} %>
+                <%= link_to "Vote", root_path, class: class_name_by_tab(root_path) %>
 
-                <%= link_to "Dashboard", results_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+                <%= link_to "Dashboard", results_path, class: class_name_by_tab(results_path) %>
 
-                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contestants</a>
+                <%= link_to "Contestants", admin_contestants_path, class: class_name_by_tab(admin_contestants_path) %>
               </div>
             </div>
           </div>
