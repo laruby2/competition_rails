@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_url
     else
+      flash.now[:alert] = "Sign up not successful"
       render :new, status: :unprocessable_entity
     end
   end

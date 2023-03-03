@@ -15,23 +15,32 @@
     <nav class="bg-gray-800">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
-          <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div class="hidden sm:block sm:ml-6">
-              <div class="flex space-x-4">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <% if signed_in? %>
-                  <%= link_to "Vote", root_path, class: class_name_by_tab(root_path) %>
-                  <% if admin_user? %>
+          <% if signed_in? %>
+            <div>
+              <%= link_to "Vote", root_path, class: class_name_by_tab(root_path) %>
+            </div>
+            <% if admin_user? %>
+              <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="hidden sm:block sm:ml-6">
+                  <div class="flex space-x-4">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <%= link_to "Dashboard", results_path, class: class_name_by_tab(results_path) %>
                     <%= link_to "Contestants", admin_contestants_path, class: class_name_by_tab(admin_contestants_path) %>
-                  <% end %>
-                <% else %>
-                  <%= link_to "Register", new_user_path, class: class_name_by_tab(new_user_path) %>
-                  <%= link_to "Log In", new_session_path, class: class_name_by_tab(new_session_path) %>
-                <% end %>
+                    <%= link_to "Users", users_path, class: class_name_by_tab(users_path) %>
+                  </div>
+                </div>
               </div>
+            <% end %>
+            <div>
+              <%= link_to "Hello \"#{current_user.username}\"", user_path(current_user.another_id), class: class_name_by_tab(user_path(current_user.another_id)) %>
             </div>
-          </div>
+          <% else %>
+            <div></div>
+            <div>
+              <%= link_to "Register", new_user_path, class: class_name_by_tab(new_user_path) %>
+              <%= link_to "Sign In", new_session_path, class: class_name_by_tab(new_session_path) %>
+            </div>
+          <% end %>
         </div>
       </div>
     </nav>
