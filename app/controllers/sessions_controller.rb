@@ -10,8 +10,13 @@ class SessionsController < ApplicationController
       redirect_to session[:intended_url] || root_url
       session[:intended_url] = nil
     else
-      flash.now[:alert] = "Invalid email/password combination!"
+      flash.now[:alert] = "Invalid email/password combination."
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to new_session_url
   end
 end
