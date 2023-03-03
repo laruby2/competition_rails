@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h-full bg-gray-50">
   <head>
-    <title>CompetitionRails</title>
+    <title>Contestants 🎤</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,24 +19,32 @@
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <%= link_to "Vote", root_path, class: class_name_by_tab(root_path) %>
-
-                <%= link_to "Dashboard", results_path, class: class_name_by_tab(results_path) %>
-
-                <%= link_to "Contestants", admin_contestants_path, class: class_name_by_tab(admin_contestants_path) %>
+                <% if signed_in? %>
+                  <%= link_to "Vote", root_path, class: class_name_by_tab(root_path) %>
+                  <% if admin_user? %>
+                    <%= link_to "Dashboard", results_path, class: class_name_by_tab(results_path) %>
+                    <%= link_to "Contestants", admin_contestants_path, class: class_name_by_tab(admin_contestants_path) %>
+                  <% end %>
+                <% else %>
+                  <%= link_to "Register", new_user_path, class: class_name_by_tab(new_user_path) %>
+                  <%= link_to "Log In", new_session_path, class: class_name_by_tab(new_session_path) %>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
       </div>
     </nav>
-    <% if flash %>
-      <% flash.keys.each do |key| %>
-        <p><%= flash[key] %></p>
+    <div class="container mx-auto flex">
+      <% if flash.present? %>
+        <div data-controller="flash" class="flex items-center top-5 left-5 py-3 px-5 rounded-lg">
+          <% flash.keys.each do |key| %>
+            <div class="mr-4 text-red-500"><%= flash[key] %></div>
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
-
-    <main class="container mx-auto mt-28 px-5 flex">
+    </div>
+    <main class="container mx-auto mt-8 px-5 flex">
       <%= yield %>
     </main>
   </body>

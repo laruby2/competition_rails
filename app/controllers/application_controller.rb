@@ -15,10 +15,16 @@ class ApplicationController < ActionController::Base
   def signed_in?
     !current_user.nil?
   end
+  helper_method :signed_in?
 
   def require_admin
-    if !current_user.admin?
+    if !admin_user?
       redirect_to user_url(current_user.another_id), notice: "admin only"
     end
   end
+
+  def admin_user?
+    current_user.admin?
+  end
+  helper_method :admin_user?
 end
