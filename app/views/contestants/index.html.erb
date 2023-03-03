@@ -1,16 +1,15 @@
-<%= turbo_frame_tag "contestants" do %>
+<%= turbo_frame_tag "contestants", style: "width: 100%;" do %>
   <% if @contestants.any? %>
-    <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <ul class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
       <% @contestants.each do |contestant| %>
         <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-          <%= contestant.name %>
           <%= render "activity/votes", contestant: contestant %>
           <h3 class="text-sm text-gray-400"><%= contestant.location %></h3>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <div class="w-48 text-sm font-medium text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <div class="w-full text-sm font-medium text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
       <h2>No contestants</h2>
     </div>
   <% end %>
