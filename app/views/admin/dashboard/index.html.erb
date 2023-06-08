@@ -3,7 +3,7 @@
 <ul class="w-full font-medium text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
   <% @contestants.each do |contestant| %>
     <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600 group">
-      <p class="text-sm text-gray-900">
+      <p class="text-sm text-gray-900 dark:text-white">
         <%= contestant.name %>
         <div class="float-right">
           <%= turbo_frame_tag "#{dom_id(contestant)}_votes_count" do %>
@@ -12,6 +12,6 @@
         </div>
       </p>
       <h3 class="text-sm text-gray-400"><%= contestant.location %></h3>
-    </li>      
+    </li>
   <% end %>
 </ul>

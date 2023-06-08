@@ -1,6 +1,6 @@
 <%= turbo_frame_tag contestant do %>
   <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-    <p class="text-sm text-gray-900">
+    <p class="text-sm text-gray-900 dark:text-white">
       <%= contestant.name %>
       <div class="float-right">
         <%= button_to 'delete', admin_contestant_path(contestant), method: :delete, form: { data: { turbo_confirm: "Are you sure with deleting #{contestant.name}?" }}  %>
