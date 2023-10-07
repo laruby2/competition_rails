@@ -2,5 +2,5 @@ class Round < ApplicationRecord
   has_many :audiences
   has_many :users, through: :audiences
   has_many :contestants
-  has_one :owner, class_name: 'User'
+  has_one :owner, class_name: 'User', foreign_key: 'owner_id'
 end

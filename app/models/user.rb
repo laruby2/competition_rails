@@ -3,12 +3,12 @@ class User < ApplicationRecord
   has_many :votes, dependent: :destroy
 
   has_many :audiences, dependent: :destroy
-  has_many :rounds, through: :audiences
+  has_many :rounds, foreign_key: 'owner_id'
 
   validates :username, presence: true,
     uniqueness: { case_sensitive: false }
 
-  enum user_role: [:admin, :audience]
+  enum user_role: [:admin, :member]
 
   def assign_my_votes_to_contestants(contestants)
     my_votes = votes.where(contestant: contestants)

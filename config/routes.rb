@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   end
   get "results" => "admin/dashboard#index"
 
+  resources :rounds
+
   # Defines the root path route ("/")
   root "contestants#index"
 end
