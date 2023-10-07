@@ -7,12 +7,7 @@
     <% if @user.rounds.present? %>
       <hr class="border-t border-gray-300 my-4">
       <p class="text-gray-700 text-base">
-        <% length = @user.rounds.length %>
-        You own
-        <% @user.rounds.each_with_index do |round, index| %>
-          <%= link_to("“#{round.title}”", round) %><%= index < length - 2 ? ',' : '' %><%= index == length - 2 ? ' and' : '' %>
-        <% end %>
-        round.
+        <%= user_s_own_rounds(@user.rounds) %>
       </p>
     <% end %>
   </div>
