@@ -23,7 +23,7 @@
               <% if signed_in? %>
                 <%= link_to "Vote", root_path, class: class_name_by_tab(root_path) %>
               <% end %>
-              <% if signed_in? && admin_user? || current_user.rounds.include?(@round) %>
+              <% if admin_user? || signed_in? && current_user.owner?(@round) %>
                 <%= link_to "Dashboard", results_path, class: class_name_by_tab(results_path) %>
                 <%= link_to "Contestants", admin_contestants_path, class: class_name_by_tab(admin_contestants_path) %>
                 <%= link_to "Users", users_path, class: class_name_by_tab(users_path) %>

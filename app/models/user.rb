@@ -17,4 +17,8 @@ class User < ApplicationRecord
       cont
     end
   end
+
+  def owner?(round)
+    rounds.include?(round)
+  end
 end
