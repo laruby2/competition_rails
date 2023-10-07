@@ -18,10 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_083955) do
   create_table "audiences", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "round_id"
-    t.uuid "another_id", default: -> { "gen_random_uuid()" }, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["another_id"], name: "index_audiences_on_another_id"
   end
 
   create_table "contestants", force: :cascade do |t|
@@ -36,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_083955) do
     t.string "title"
     t.bigint "owner_id"
     t.json "data", default: {}
+    t.uuid "another_id", default: -> { "gen_random_uuid()" }, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
