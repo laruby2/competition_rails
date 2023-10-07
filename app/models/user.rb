@@ -2,6 +2,9 @@ class User < ApplicationRecord
   has_secure_password
   has_many :votes, dependent: :destroy
 
+  has_many :audiences, dependent: :destroy
+  has_many :rounds, through: :audiences
+
   validates :username, presence: true,
     uniqueness: { case_sensitive: false }
 
