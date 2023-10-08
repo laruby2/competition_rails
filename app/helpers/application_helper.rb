@@ -11,7 +11,7 @@ module ApplicationHelper
     sentence = []
     sentence << "You own"
     rounds.each_with_index do |round, index|
-      link = link_to("“#{round.title}”", round_path(round.another_id))
+      link = link_to("“#{round.title}”", round_path(round))
       comma = index < length - 2 ? ',' : ''
       and_at_the_end = index == length - 2 ? ' and' : ''
       sentence.push [link, comma, and_at_the_end].join

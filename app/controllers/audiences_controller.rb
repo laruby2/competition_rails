@@ -3,7 +3,7 @@ class AudiencesController < ApplicationController
 
   def new
     if @round.audiences.exists?(user_id: current_user.id)
-      redirect_to round_url(@round.another_id), notice: "User already joined as audience" and return
+      redirect_to round_url(@round), notice: "User already joined as audience" and return
     end
     @audience = @round.audiences.build
   end
@@ -12,7 +12,7 @@ class AudiencesController < ApplicationController
     @audience = @round.audiences.build(audience_params.merge(user_id: current_user.id))
 
     if @audience.save
-      redirect_to round_contestants_url(@round.another_id)
+      redirect_to round_contestants_url(@round)
     else
       render 'new', status: :unprocessable_entity
     end

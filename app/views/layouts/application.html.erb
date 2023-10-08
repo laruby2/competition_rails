@@ -23,10 +23,10 @@
 
               <% if @round.present? %>
                 <% if signed_in? && current_user.audience?(@round) %>
-                  <%= link_to "Vote", round_contestants_path(@round.another_id), class: class_name_by_tab(root_path) %>
+                  <%= link_to "Vote", round_contestants_path(@round), class: class_name_by_tab(root_path) %>
                 <% end %>
                 <% if signed_in? && current_user.owner?(@round) %>
-                  <%= link_to "Result", owner_results_path(@round.another_id), class: class_name_by_tab(owner_results_path(@round.another_id)) %>
+                  <%= link_to "Result", owner_round_results_path(@round), class: class_name_by_tab(owner_round_results_path(@round)) %>
                   <%#= link_to "Contestants", owner_round_contestants_path, class: class_name_by_tab(owner_round_contestants_path) %>
                 <% end %>
               <% end %>

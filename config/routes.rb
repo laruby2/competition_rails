@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   namespace :owner do
     resources :rounds, only: [] do
       resources :audiences, only: [:index]
-      resources :contestants, only: [:new, :create]
+      resources :contestants, only: [:new, :create, :destroy]
+      get "results" => "contestants#index"
     end
-    get "results" => "owner/contestants#index"
   end
 
   resources :rounds, only: [:show, :new, :create, :index] do

@@ -9,7 +9,7 @@ class RoundsController < ApplicationController
     @round = current_user.rounds.build(round_params)
 
     if @round.save
-      redirect_to round_url(@round.another_id), notice: "New round added."
+      redirect_to round_url(@round), notice: "New round added."
     else
       flash.now[:alert] = "New Round Adding not successful"
       render :new, status: :unprocessable_entity
