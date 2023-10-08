@@ -1,20 +1,18 @@
 class AudiencesController < ApplicationController
+  before_action :set_round
 
   def new
-    @round = Round.find_by(another_id: params[:round_id])
-    if @round.audiences.include?(current_user)
-      redirect_to round_url(@round.another_id) and return
+    if @round.audiences.exists?(user_id: current_user.id)
+      redirect_to round_url(@round.another_id), notice: "User already joined as audience" and return
     end
     @audience = @round.audiences.build
   end
 
   def create
-    @round = Round.find_by(another_id: params[:round_id])
-    @audience = @round.audiences.build(audience_params)
-      require 'pry'; binding.pry
+    @audience = @round.audiences.build(audience_params.merge(user_id: current_user.id))
+
     if @audience.save
-      @round = current_user.rounds.find_by(another_id: params[:round_id])
-      redirect_to round_url(@round.another_id)
+      redirect_to round_contestants_url(@round.another_id)
     else
       render 'new', status: :unprocessable_entity
     end
@@ -23,6 +21,10 @@ class AudiencesController < ApplicationController
   private
 
   def audience_params
-    params.require(:audience).permit(:name).merge(user_id: current_user.id)
+    params.require(:audience).permit(:name)
+  end
+
+  def set_round
+    @round = Round.find_by(another_id: params[:round_id])
   end
 end

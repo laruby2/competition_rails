@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_07_083955) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_040103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_083955) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "votes_count", default: 0
+    t.bigint "round_id"
+    t.index ["round_id"], name: "index_contestants_on_round_id"
   end
 
   create_table "rounds", force: :cascade do |t|

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url
+      redirect_to session[:intended_url] || root_url
     else
       flash.now[:alert] = "Sign up not successful"
       render :new, status: :unprocessable_entity

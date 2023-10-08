@@ -1,17 +1,13 @@
-class Admin::ContestantsController < ApplicationController
+class Owner::ContestantsController < ApplicationController
   before_action :require_signin
-  before_action :require_admin
+  before_action :set_round
 
   def index
-    @contestants = Contestant.all
-  end
-
-  def new
-    @contestant = Contestant.new
+    @contestants = @round.contestants.all
   end
 
   def create
-    @contestant = Contestant.new(contestant_params)
+    @contestant = @round.contestants.build(contestant_params)
     if @contestant.save
       # Use create.turbo_stream.erb
     else
@@ -20,7 +16,7 @@ class Admin::ContestantsController < ApplicationController
   end
 
   def destroy
-    @contestant = Contestant.find(params[:id])
+    @contestant = @round.contestants.find(params[:id])
     @contestant.destroy
     # Use destroy.turbo_stream.erb
   end
@@ -29,5 +25,9 @@ class Admin::ContestantsController < ApplicationController
 
   def contestant_params
     params.require(:contestant).permit(:name, :location)
+  end
+
+  def set_round
+    @round = Round.find_by(another_id: params[:round_id])
   end
 end

@@ -4,5 +4,7 @@
     <%= button_to "Owner (list of audiences)", owner_round_audiences_path(@round.another_id), method: :get %>
   <% end %>
 
-  <%= button_to "Join the audience", new_round_audience_path(@round.another_id), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4" %>
+  <% unless current_user.audience?(@round) %>
+    <%= button_to "Join the audience", new_round_audience_path(@round.another_id), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4" %>
+  <% end %>
 </div>

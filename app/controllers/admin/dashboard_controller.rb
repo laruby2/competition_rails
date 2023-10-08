@@ -3,6 +3,7 @@ class Admin::DashboardController < ApplicationController
   before_action :require_admin
 
   def index
-    @contestants = Contestant.all
+    @users = User.count
+    @rounds = Round.count
   end
 end

@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def owner?(round)
     rounds.include?(round)
   end
+
+  def audience?(round)
+    round.audiences.exists?(user: self)
+  end
 end

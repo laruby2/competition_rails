@@ -1,4 +1,5 @@
 class Contestant < ApplicationRecord
+  belongs_to :round
   has_many :votes, dependent: :destroy
 
   attr_accessor :my_vote
