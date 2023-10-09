@@ -3,7 +3,7 @@ class ContestantsController < ApplicationController
   before_action :set_round
 
   def index
-    @contestants = @round.contestants.all
+    @contestants = @round.contestants.order(:created_at)
     if @contestants.any?
       @contestants = current_user.assign_my_votes_to_contestants(@contestants)
     end
