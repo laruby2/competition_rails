@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :require_signout, only: [:new, :create]
+
   def new
   end
 
