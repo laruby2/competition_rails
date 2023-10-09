@@ -3,7 +3,13 @@ class ApplicationController < ActionController::Base
   def require_signin
     unless signed_in?
       session[:intended_url] = request.url
-      redirect_to signin_url
+      redirect_to signin_url, notice: "Not logged in"
+    end
+  end
+
+  def require_signout
+    if signed_in?
+      redirect_to user_url(current_user.another_id), notice: "Already logged in"
     end
   end
 

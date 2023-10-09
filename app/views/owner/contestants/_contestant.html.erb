@@ -1,0 +1,20 @@
+<%= turbo_frame_tag contestant do %>
+  <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
+    <div class=" flex justify-between">
+      <div>
+        <h2 class="text-sm text-gray-900 dark:text-white"><%= contestant.name %><h2>
+        <h3 class="text-sm text-gray-400"><%= contestant.location %></h3>
+      </div>
+      <% if current_user.owner?(@round) %>
+        <div>
+          <%= turbo_frame_tag "#{dom_id(contestant)}_votes_count" do %>
+            <%= contestant.votes_count %><br>
+          <% end %>
+        </div>
+        <div>
+          <%= button_to 'delete', owner_round_contestant_path(@round, contestant), method: :delete, form: { data: { turbo_confirm: "Are you sure with deleting #{contestant.name}?" }}, class: "px-2 py-1 rounded bg-blue-500 hover:bg-blue-700 text-white font-bold" %>
+        </div>
+      <% end %>
+    </div>
+  </li>
+<% end %>

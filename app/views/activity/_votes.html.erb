@@ -1,10 +1,10 @@
 <%= turbo_frame_tag "#{dom_id(contestant)}_votes" do %>
   <% if vote = contestant.my_vote %>
-    <%= button_to contestant_vote_path(contestant, vote), method: :delete do %>
+    <%= button_to round_contestant_vote_path(contestant.round, contestant, vote), method: :delete do %>
       <%= contestant.name %> <%= image_tag "full-heart.svg", size: "18x18", class: "inline" %>
     <% end %>
   <% else %>
-    <%= button_to contestant_votes_path(contestant) do %>
+    <%= button_to round_contestant_votes_path(contestant.round, contestant) do %>
       <%= contestant.name %> <%= image_tag "empty-heart.svg", size: "18x18", class: "inline" %>
     <% end %>
   <% end %>

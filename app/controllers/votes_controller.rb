@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  before_action :set_round
   before_action :find_contestant
 
   def create
@@ -21,6 +22,10 @@ class VotesController < ApplicationController
   private
 
   def find_contestant
-    @contestant = Contestant.find(params[:contestant_id])
+    @contestant = @round.contestants.find(params[:contestant_id])
+  end
+
+  def set_round
+    @round = Round.find_by(another_id: params[:round_id])
   end
 end

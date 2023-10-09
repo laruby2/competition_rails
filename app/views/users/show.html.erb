@@ -4,9 +4,15 @@
     <p class="text-gray-700 text-base">
       Thank you for using this app. This page shows who the current user is.
     </p>
+    <% if @user.rounds.present? %>
+      <hr class="border-t border-gray-300 my-4">
+      <p class="text-gray-700 text-base">
+        <%= user_s_own_rounds(@user.rounds) %>
+      </p>
+    <% end %>
   </div>
   <div class="px-6 pt-4 pb-2">
-    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= @user.user_role %></span>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= @user.user_role %></span>
   </div>
 </div>
 <div class="mt-8">

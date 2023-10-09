@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_06_041419) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_040103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "audiences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "round_id"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contestants", force: :cascade do |t|
     t.string "name"
@@ -21,6 +29,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_041419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "votes_count", default: 0
+    t.bigint "round_id"
+    t.index ["round_id"], name: "index_contestants_on_round_id"
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.string "title"
+    t.bigint "owner_id"
+    t.json "data", default: {}
+    t.uuid "another_id", default: -> { "gen_random_uuid()" }, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,8 +58,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_041419) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "audience_id"
+    t.index ["audience_id", "contestant_id"], name: "index_votes_on_audience_id_and_contestant_id"
     t.index ["contestant_id"], name: "index_votes_on_contestant_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end
