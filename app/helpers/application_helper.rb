@@ -11,12 +11,26 @@ module ApplicationHelper
     sentence = []
     sentence << "You own"
     rounds.each_with_index do |round, index|
-      link = link_to("“#{round.title}”", round_path(round))
+      link_round = link_to("“#{round.title}”", round_path(round))
       comma = index < length - 2 ? ',' : ''
       and_at_the_end = index == length - 2 ? ' and' : ''
-      sentence.push [link, comma, and_at_the_end].join
+      sentence.push [link_round, comma, and_at_the_end].join
     end
     sentence << "round."
+    sentence.join(' ').html_safe
+  end
+
+  def user_s_audiences(audiences)
+    length = audiences.length
+    sentence = []
+    sentence << "You are an audience of"
+    audiences.each_with_index do |audience, index|
+      link_round = link_to("“#{audience.round.title}”", round_path(audience.round))
+      comma = index < length - 2 ? ',' : ''
+      and_at_the_end = index == length - 2 ? ' and' : '.'
+      as = " as “#{audience.name}”"
+      sentence.push [link_round, as, comma, and_at_the_end].join
+    end
     sentence.join(' ').html_safe
   end
 end

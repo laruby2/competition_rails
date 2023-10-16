@@ -4,10 +4,16 @@
     <p class="text-gray-700 text-base">
       Thank you for using this app. This page shows who the current user is.
     </p>
-    <% if @user.rounds.present? %>
+    <% if @user.rounds.any? %>
       <hr class="border-t border-gray-300 my-4">
       <p class="text-gray-700 text-base">
         <%= user_s_own_rounds(@user.rounds) %>
+      </p>
+    <% end %>
+    <% if @user.audiences.any? %>
+      <hr class="border-t border-gray-300 my-4">
+      <p class="text-gray-700 text-base">
+        <%= user_s_audiences(@user.audiences) %>
       </p>
     <% end %>
   </div>
