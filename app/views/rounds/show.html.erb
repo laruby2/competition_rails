@@ -1,10 +1,12 @@
 <div class="max-w-md mx-auto mt-5">
   <h2 class="text-2xl font-semibold mb-4">Welcome to “<%= @round.title %>” round</h2>
   <% if current_user.owner?(@round) %>
-    <%= button_to "Owner (list of audiences)", owner_round_audiences_path(@round), method: :get %>
-  <% end %>
-
-  <% unless current_user.audience?(@round) %>
+    Owner
+  <ul>
+    <li><%= button_to "list of audiences", owner_round_audiences_path(@round), method: :get %></li>
+    <li><%= button_to "list of contestants", owner_round_contestants_path(@round), method: :get %></li>
+  </ul>
+  <% elsif !current_user.audience?(@round) %>
     <%= button_to "Join the audience", new_round_audience_path(@round), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4" %>
   <% end %>
 </div>
