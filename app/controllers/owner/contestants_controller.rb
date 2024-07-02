@@ -7,6 +7,10 @@ class Owner::ContestantsController < ApplicationController
     @contestants = @round.contestants.all
   end
 
+  def result
+    @contestants = @round.contestants.all
+  end
+
   def create
     @contestant = @round.contestants.build(contestant_params)
     if @contestant.save

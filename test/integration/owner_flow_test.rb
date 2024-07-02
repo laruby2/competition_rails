@@ -60,6 +60,6 @@ class OwnerFlowTest < ActionDispatch::IntegrationTest
     get owner_round_results_path(round.another_id)
 
     assert_response :ok
-    assert_select "h2.font-semibold", "“concert” round contestants"
+    assert_select "h2.font-semibold", "“concert” round result"
   end
 end
