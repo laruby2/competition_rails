@@ -1,0 +1,11 @@
+<%= turbo_stream_from "activity" %>
+
+<div class="max-w-md mx-auto mt-5">
+  <h2 class="text-2xl font-semibold mb-4">“<%= link_to @round.title, round_path(@round) %>” round result</h2>
+</div>
+
+<ul class="w-full font-medium text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+  <%= turbo_frame_tag "admin_contestants" do %>
+    <%= render @contestants %>
+  <% end %>
+</ul>
