@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'phone_numbers/verify' => "phone_numbers#verify"
   get 'phone_numbers/passcode' => "phone_numbers#edit"
   post 'phone_numbers/passcode' => "phone_numbers#passcode_enter"
+  delete 'phone_numbers/delete' => "phone_numbers#destroy"
 
   resource :session, only: [:new, :create, :destroy]
   get "signin" => "sessions#new"
