@@ -2,9 +2,13 @@ class PhoneNumbersController < ApplicationController
 
   # post request to twilio
   def verify
+    telephone = params[:phone_number]
+
     r = /\A\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})\z/
     m = r.match(params[:phone_number])
-    telephone = "+1#{m[1]}#{m[2]}#{m[3]}"
+    if m.present? && m.length == 4
+      telephone = "+1#{m[1]}#{m[2]}#{m[3]}" # E.164 format
+    end
 
     response = client.lookups.v1.phone_numbers(telephone).fetch
     valid_num = response.phone_number # if invalid, throws an exception

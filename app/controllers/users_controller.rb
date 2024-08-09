@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
   before_action :require_signin, only: [:index, :show]
   before_action :require_admin, only: [:index]
+  before_action :require_telephone, only: [:new, :create]
 
   def new
     @user = User.new
-    @user.phone_number = session[:telephone] if session[:telephone]
+    @user.phone_number = session[:telephone]
   end
 
   def create
     @user = User.new(user_params)
-    @user.phone_number = session[:telephone] if session[:telephone]
+    @user.phone_number = session[:telephone]
 
     if @user.save
       session[:user_id] = @user.id
@@ -39,5 +40,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :phone_number, :password)
+  end
+
+  def require_telephone
+    unless session[:telephone]
+      redirect_to signin_url
+    end
   end
 end
