@@ -9,9 +9,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.phone_number = session[:telephone] if session[:telephone]
 
     if @user.save
       session[:user_id] = @user.id
+      session[:telephone] = nil
       redirect_to session[:intended_url] || root_url
     else
       flash.now[:alert] = "Sign up not successful: #{@user.errors.full_messages.to_sentence}"

@@ -11,6 +11,6 @@ contestants = Contestant.create([
   { name: "Star Wars", location: "Galaxy" }
 ])
 users = User.create([
-  { username: "jimmy", phone_number: "abcd123", password: "1111" },
-  { username: "gapbun", phone_number: "asdf456", password: "1111", user_role: "admin" }
+  { username: "jimmy", phone_number: "+13231234567", password: "secret" },
+  { username: "gapbun", phone_number: "+11234567890", password: "secret", user_role: "admin" }
 ])
