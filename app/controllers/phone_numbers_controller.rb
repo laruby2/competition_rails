@@ -74,6 +74,11 @@ class PhoneNumbersController < ApplicationController
   def new
   end
 
+  def destroy
+    session[:telephone] = nil
+    redirect_to root_url
+  end
+
   private
 
   def client
