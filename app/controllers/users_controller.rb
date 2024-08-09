@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.phone_number = session[:telephone] if session[:telephone]
   end
 
   def create
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to session[:intended_url] || root_url
     else
-      flash.now[:alert] = "Sign up not successful"
+      flash.now[:alert] = "Sign up not successful: #{@user.errors.full_messages.to_sentence}"
       render :new, status: :unprocessable_entity
     end
   end
