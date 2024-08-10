@@ -8,6 +8,11 @@
           <li><%= link_to "list of audiences", owner_round_audiences_path(@round) %></li>
           <li><%= link_to "list of contestants", owner_round_contestants_path(@round) %></li>
         </ul>
+        <p class="text-md font-bold mt-10 mb-2">How to invite audience</p>
+        <p class="text-sm font-normal mb-2">
+          Please copy the address of this page and share:
+          <%= @round.url %>
+        </p>
       </div>
     <% else %>
       <div>
