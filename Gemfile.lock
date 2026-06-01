@@ -137,9 +137,7 @@ GEM
     matrix (0.4.2)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    minitest (6.0.6)
-      drb (~> 2.0)
-      prism (~> 1.5)
+    minitest (5.27.0)
     msgpack (1.7.2)
     mutex_m (0.3.0)
     net-http (0.4.1)
@@ -159,7 +157,6 @@ GEM
     nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
     pg (1.5.4)
-    prism (1.9.0)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -271,6 +268,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  minitest (~> 5.0, < 6.0)
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)

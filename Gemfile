@@ -70,6 +70,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  gem "minitest", "~> 5.0", "< 6.0"
 end
 
 gem "tailwindcss-rails", "= 2.0.23"
